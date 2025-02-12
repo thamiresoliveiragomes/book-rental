@@ -31,20 +31,20 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-type LocaleMessages = {
-  welcome: string;
-  home_description: string;
-  browse_books: string;
-  wide_collection: string;
-  wide_collection_desc: string;
-  easy_rental: string;
-  easy_rental_desc: string;
-  global_access: string;
-  global_access_desc: string;
-  footer_text: string;
-};
+// type LocaleMessages = {
+//   welcome: string;
+//   home_description: string;
+//   browse_books: string;
+//   wide_collection: string;
+//   wide_collection_desc: string;
+//   easy_rental: string;
+//   easy_rental_desc: string;
+//   global_access: string;
+//   global_access_desc: string;
+//   footer_text: string;
+// };
 
-const i18n = useI18n<LocaleMessages>();
+// const i18n = useI18n<LocaleMessages>();
 </script>
 
 <style scoped>
