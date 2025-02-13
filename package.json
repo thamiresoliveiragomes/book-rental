@@ -12,6 +12,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@primevue/themes": "^4.2.5",
     "axios": "^1.7.9",
     "book-rental": "file:",
     "pinia": "^2.3.1",

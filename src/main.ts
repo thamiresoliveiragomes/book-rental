@@ -4,10 +4,15 @@ import router from './router';
 import { createPinia } from 'pinia';
 import i18n from './i18n';
 import PrimeVue from 'primevue/config';
+import Material from '@primevue/themes/material';
 
 const app = createApp(App);
 app.use(router);
 app.use(createPinia());
-app.use(PrimeVue);
+app.use(PrimeVue, {
+  theme: {
+    preset: Material,
+  },
+});
 app.use(i18n);
 app.mount('#app');
