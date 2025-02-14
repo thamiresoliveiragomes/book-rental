@@ -32,7 +32,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { Button, Card, Dialog } from 'primevue';
@@ -41,31 +41,54 @@ import { type Book } from '../models/Book';
 import { useToast } from 'primevue/usetoast';
 import { useI18n } from 'vue-i18n';
 
-defineProps<{ book: Book }>();
-const { t } = useI18n();
+export default {
+  components: {
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Button,
+    Card,
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Dialog,
+    BookDetails,
+  },
+  props: {
+    book: {
+      type: Object as () => Book,
+      required: true,
+    },
+  },
+  setup() {
+    const { t } = useI18n();
+    const router = useRouter();
+    const isModalVisible = ref(false);
+    const toast = useToast();
 
-const router = useRouter();
-const isModalVisible = ref(false);
+    const openModal = () => {
+      isModalVisible.value = true;
+    };
 
-const openModal = () => {
-  isModalVisible.value = true;
+    const closeModal = () => {
+      isModalVisible.value = false;
+      toast.add({
+        severity: 'success',
+        summary: t('bookInfo.successMessageToast'),
+        detail: t('bookInfo.successDetailToast'),
+        life: 5000,
+      });
+    };
+
+    const selectBook = (book: Book) => {
+      router.push(`/product/${book.id}`);
+    };
+
+    return {
+      t,
+      isModalVisible,
+      openModal,
+      closeModal,
+      selectBook,
+    };
+  },
 };
-
-const closeModal = () => {
-  isModalVisible.value = false;
-  toast.add({
-    severity: 'success',
-    summary: t('bookInfo.successMessageToast'),
-    detail: t('bookInfo.successDetailToast'),
-    life: 5000,
-  });
-};
-
-const selectBook = (book: Book) => {
-  router.push(`/product/${book.id}`);
-};
-
-const toast = useToast();
 </script>
 
 <style scoped lang="scss">

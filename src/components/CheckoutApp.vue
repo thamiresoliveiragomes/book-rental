@@ -83,44 +83,67 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { computed, ref } from 'vue';
 import { useCartStore } from '../stores/cartStore';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { Button, InputText, FloatLabel } from 'primevue';
 
-const cartStore = useCartStore();
-const router = useRouter();
-const { totalCartPrice } = storeToRefs(cartStore);
-const email = ref('');
-const cardNumber = ref(null);
-const cardCode = ref(null);
-const cardExpirationDate = ref('');
-const emailTouched = ref(false);
+export default {
+  components: {
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Button,
+    InputText,
+    FloatLabel,
+  },
+  setup() {
+    const cartStore = useCartStore();
+    const router = useRouter();
+    const { totalCartPrice } = storeToRefs(cartStore);
+    const email = ref('');
+    const cardNumber = ref(null);
+    const cardCode = ref(null);
+    const cardExpirationDate = ref('');
+    const emailTouched = ref(false);
 
-const goToCart = () => {
-  router.push('/cart');
+    const goToCart = () => {
+      router.push('/cart');
+    };
+
+    const completePurchase = () => {
+      cartStore.clearCart();
+      router.push('/');
+    };
+
+    const validateEmail = (email: string): boolean => {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    };
+
+    const isFormValid = computed(() => {
+      return (
+        validateEmail(email.value) &&
+        cardNumber.value &&
+        cardCode.value &&
+        cardExpirationDate.value
+      );
+    });
+
+    return {
+      email,
+      cardNumber,
+      cardCode,
+      cardExpirationDate,
+      emailTouched,
+      totalCartPrice,
+      goToCart,
+      completePurchase,
+      validateEmail,
+      isFormValid,
+    };
+  },
 };
-
-const completePurchase = () => {
-  cartStore.clearCart();
-  router.push('/');
-};
-
-const validateEmail = (email: string): boolean => {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-};
-
-const isFormValid = computed(() => {
-  return (
-    validateEmail(email.value) &&
-    cardNumber.value &&
-    cardCode.value &&
-    cardExpirationDate.value
-  );
-});
 </script>
 
 <style scoped lang="scss">

@@ -14,38 +14,50 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useBookStore } from '../stores/bookStore';
 import BookCard from './BookCard.vue';
 
-const bookStore = useBookStore();
-const route = useRoute();
-const searchQuery = ref(route.query.q || '');
+export default {
+  components: {
+    BookCard,
+  },
+  setup() {
+    const bookStore = useBookStore();
+    const route = useRoute();
+    const searchQuery = ref(route.query.q || '');
 
-onMounted(async () => {
-  await bookStore.loadBooks();
-});
+    onMounted(async () => {
+      await bookStore.loadBooks();
+    });
 
-watch(
-  () => route.query.q,
-  (newQuery) => {
-    searchQuery.value = newQuery || '';
-  }
-);
+    watch(
+      () => route.query.q,
+      (newQuery) => {
+        searchQuery.value = newQuery || '';
+      }
+    );
 
-const filteredBooks = computed(() => {
-  if (!searchQuery.value) return [];
+    const filteredBooks = computed(() => {
+      if (!searchQuery.value) return [];
 
-  const query = searchQuery.value.toString().toLowerCase();
+      const query = searchQuery.value.toString().toLowerCase();
 
-  return bookStore.books.filter((book) =>
-    [book.title, book.author, ...book.categories]
-      .map((field) => field.toLowerCase())
-      .some((text) => text.includes(query))
-  );
-});
+      return bookStore.books.filter((book) =>
+        [book.title, book.author, ...book.categories]
+          .map((field) => field.toLowerCase())
+          .some((text) => text.includes(query))
+      );
+    });
+
+    return {
+      searchQuery,
+      filteredBooks,
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">
