@@ -1,3 +1,51 @@
 {
-    "welcome": "Welcome to the Book Rental"
+  "bookInfo": {
+    "coverAlt": "Book cover",
+    "from": "from",
+    "rentButton": "rent",
+    "days": "days",
+    "successMessageToast": "Book added to cart!",
+    "successDetailToast": "You can view your cart by clicking the icon in the upper right corner."
+  },
+  "search": {
+    "noResults": "No results found",
+    "title": "Results for",
+    "placeholder": "search"
+  },
+  "categories": {
+    "categories": "Categories",
+    "bestSellers": "Best sellers",
+    "newReleases": "New releases",
+    "viewAll": "View all",
+    "Mais Vendidos": "Best Sellers",
+    "Lançamentos": "New Releases",
+    "Ver Todos": "See All",
+    "Ficção científica": "Science Fiction",
+    "Clássico": "Classics",
+    "Romance": "Romance",
+    "Drama": "Drama",
+    "Terror": "Horror"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "clearCart": "clear cart",
+    "finalizeOrder": "checkout",
+    "total": "total"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "formTitle": "personal information",
+    "email": "email",
+    "cardNumber": "card number",
+    "cardExpirationDate": "expiration date",
+    "cardCode": "card code",
+    "cancel": "cancel",
+    "completePurchase": "complete purchase",
+    "successTitle": "Purchase Completed Successfully!",
+    "successMessage": "Thank you for your purchase! Your order has been processed successfully, and you will soon receive a confirmation in your email. If you have any questions, please contact our support team. Enjoy your reading!"
+  },
+  "footer": {
+    "text": "2025 - All rights reserved"
+  }
 }

@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <Toast />
     <router-view></router-view>
   </div>
 </template>
 
 <script setup>
 import { defineComponent } from 'vue';
+import { Toast } from 'primevue';
 
 defineComponent({
   setup() {
@@ -20,6 +22,6 @@ defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #f0f0f0;
+  background-color: #fff;
 }
 </style>
