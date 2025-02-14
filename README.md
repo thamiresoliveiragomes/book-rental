@@ -12,6 +12,8 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 - **Vue Router**: Gerenciamento de rotas
 - **PrimeVue**: Biblioteca de componentes UI
 - **Vite**: Ferramenta rápida de build para front-end
+- **i18n**: Suporte para internacionalização
+- **ESLint & Prettier**: Padronização e formatação de código
 
 ## 💻 Como Rodar o Projeto Localmente
 
@@ -20,7 +22,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 Antes de começar, certifique-se de ter instalado:
 
 - **Node.js** (versão 16 ou superior)
-- **NPM** ou **Yarn**
+- **NPM**
 
 ### 🔹 Passo a Passo
 
@@ -35,16 +37,12 @@ Antes de começar, certifique-se de ter instalado:
 
    ```sh
    npm install
-   # ou, se estiver usando yarn
-   yarn install
    ```
 
 3. **Inicie o servidor de desenvolvimento**
 
    ```sh
    npm run dev
-   # ou
-   yarn dev
    ```
 
 4. **Abra o navegador e acesse**
@@ -60,6 +58,7 @@ Antes de começar, certifique-se de ter instalado:
 ✅ Adição de livros ao carrinho  
 ✅ Paginação para melhor navegação  
 ✅ Estilização com PrimeVue
+✅ Opção de mudança de idioma
 
 ## 📜 Licença
 

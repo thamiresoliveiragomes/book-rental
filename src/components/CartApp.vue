@@ -27,19 +27,38 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { useCartStore } from '../stores/cartStore';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import Button from 'primevue/button';
 import CartItem from './CartItem.vue';
+import { useI18n } from 'vue-i18n';
 
-const cartStore = useCartStore();
-const router = useRouter();
-const { cart, totalCartPrice } = storeToRefs(cartStore);
+export default {
+  components: {
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Button,
+    CartItem,
+  },
+  setup() {
+    const { t } = useI18n();
+    const cartStore = useCartStore();
+    const router = useRouter();
+    const { cart, totalCartPrice } = storeToRefs(cartStore);
 
-const finalizeOrder = () => {
-  router.push('/checkout');
+    const finalizeOrder = () => {
+      router.push('/checkout');
+    };
+
+    return {
+      t,
+      cart,
+      totalCartPrice,
+      cartStore,
+      finalizeOrder,
+    };
+  },
 };
 </script>
 

@@ -41,63 +41,81 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useBookStore } from '../stores/bookStore';
 import { useCartStore } from '../stores/cartStore';
 import { useRoute } from 'vue-router';
 import Button from 'primevue/button';
-import { defineEmits } from 'vue';
 
-const emit = defineEmits(['rent']);
-
-const props = defineProps<{ bookId?: number }>();
-
-const bookStore = useBookStore();
-const cartStore = useCartStore();
-const route = useRoute();
-const id = computed(() => props.bookId ?? (route.params.id as string));
-const bookSelected = computed(() =>
-  bookStore.books.find((book) => book.id === Number(id.value))
-);
-const rentalDuration = ref<number>(7);
-const rentalPrice = ref<number>(0);
-
-const addToCart = () => {
-  if (bookSelected.value) {
-    cartStore.addToCart(
-      bookSelected.value,
-      rentalDuration.value,
-      rentalPrice.value
+export default {
+  components: {
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Button,
+  },
+  props: {
+    bookId: {
+      type: Number,
+      required: false,
+      default: null,
+    },
+  },
+  setup(props, { emit }) {
+    const bookStore = useBookStore();
+    const cartStore = useCartStore();
+    const route = useRoute();
+    const id = computed(() => props.bookId ?? (route.params.id as string));
+    const bookSelected = computed(() =>
+      bookStore.books.find((book) => book.id === Number(id.value))
     );
-    emit('rent');
-  }
+    const rentalDuration = ref<number>(7);
+    const rentalPrice = ref<number>(0);
+
+    const addToCart = () => {
+      if (bookSelected.value) {
+        cartStore.addToCart(
+          bookSelected.value,
+          rentalDuration.value,
+          rentalPrice.value
+        );
+        emit('rent');
+      }
+    };
+
+    const updateRentalPrice = () => {
+      if (!bookSelected.value) return;
+      switch (rentalDuration.value) {
+        case 15:
+          rentalPrice.value = bookSelected.value.rentalPricePerWeek * 2;
+          break;
+        case 30:
+          rentalPrice.value = bookSelected.value.rentalPricePerWeek * 4;
+          break;
+        default:
+          rentalPrice.value = bookSelected.value.rentalPricePerWeek;
+      }
+    };
+
+    const setRentalDuration = (duration: number) => {
+      rentalDuration.value = duration;
+      updateRentalPrice();
+    };
+
+    watch(bookSelected, (newBook) => {
+      if (newBook) updateRentalPrice();
+    });
+
+    updateRentalPrice();
+
+    return {
+      bookSelected,
+      rentalDuration,
+      rentalPrice,
+      addToCart,
+      setRentalDuration,
+    };
+  },
 };
-
-const updateRentalPrice = () => {
-  if (!bookSelected.value) return;
-  switch (rentalDuration.value) {
-    case 15:
-      rentalPrice.value = bookSelected.value.rentalPricePerWeek * 2;
-      break;
-    case 30:
-      rentalPrice.value = bookSelected.value.rentalPricePerWeek * 4;
-      break;
-    default:
-      rentalPrice.value = bookSelected.value.rentalPricePerWeek;
-  }
-};
-
-const setRentalDuration = (duration: number) => {
-  rentalDuration.value = duration;
-  updateRentalPrice();
-};
-
-watch(bookSelected, (newBook) => {
-  if (newBook) updateRentalPrice();
-});
-
-updateRentalPrice();
 </script>
 
 <style scoped lang="scss">

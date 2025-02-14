@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import Button from 'primevue/button';
 import { useCartStore } from '../stores/cartStore';
 import { type Book } from '../models/Book';
@@ -54,17 +54,36 @@ interface CartItem {
   rentalPrice: number;
 }
 
-const props = defineProps<{ item: CartItem }>();
-const cartStore = useCartStore();
+export default {
+  components: {
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Button,
+  },
+  props: {
+    item: {
+      type: Object as () => CartItem,
+      required: true,
+    },
+  },
+  setup(props) {
+    const cartStore = useCartStore();
 
-const removeFromCart = () => {
-  cartStore.removeFromCart(props.item.book.id);
-};
+    const removeFromCart = () => {
+      cartStore.removeFromCart(props.item.book.id);
+    };
 
-const updateRentalDuration = (duration: number) => {
-  cartStore.updateRentalDuration(props.item.book.id, duration);
+    const updateRentalDuration = (duration: number) => {
+      cartStore.updateRentalDuration(props.item.book.id, duration);
+    };
+
+    return {
+      removeFromCart,
+      updateRentalDuration,
+    };
+  },
 };
 </script>
+
 <style scoped lang="scss">
 .cart-item {
   display: flex;

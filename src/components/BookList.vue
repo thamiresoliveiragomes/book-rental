@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { computed, ref, onMounted, watch } from 'vue';
 import { useBookStore } from '../stores/bookStore';
 import BookCard from './BookCard.vue';
@@ -34,92 +34,114 @@ import { useRoute } from 'vue-router';
 import Paginator from 'primevue/paginator';
 import Dropdown from 'primevue/dropdown';
 import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
 
-const bookStore = useBookStore();
-const books = computed(() => bookStore.books);
-const route = useRoute();
-const category = computed(() => route.params.category as string);
+export default {
+  components: {
+    BookCard,
+    Paginator,
+    Dropdown,
+  },
+  setup() {
+    const { t } = useI18n();
+    const bookStore = useBookStore();
+    const books = computed(() => bookStore.books);
+    const route = useRoute();
+    const category = computed(() => route.params.category as string);
 
-const title = computed(() => {
-  const decodedCategory = category.value
-    ? decodeURIComponent(category.value)
-    : 'Home';
-  return t(`categories.${decodedCategory}`).toLocaleUpperCase();
-});
+    const title = computed(() => {
+      const decodedCategory = category.value
+        ? decodeURIComponent(category.value)
+        : 'Home';
+      return t(`categories.${decodedCategory}`).toLocaleUpperCase();
+    });
 
-const filteredBooks = computed(() => {
-  if (category.value) {
-    const decodedCategory = decodeURIComponent(category.value);
-    if (
-      decodedCategory === 'Mais Vendidos' ||
-      decodedCategory === 'Lançamentos'
-    ) {
-      return books.value.filter((book) => book.tags.includes(decodedCategory));
-    } else if (decodedCategory === 'Ver Todos') {
+    const filteredBooks = computed(() => {
+      if (category.value) {
+        const decodedCategory = decodeURIComponent(category.value);
+        if (
+          decodedCategory === 'Mais Vendidos' ||
+          decodedCategory === 'Lançamentos'
+        ) {
+          return books.value.filter((book) =>
+            book.tags.includes(decodedCategory)
+          );
+        } else if (decodedCategory === 'Ver Todos') {
+          return books.value;
+        } else {
+          return books.value.filter((book) =>
+            book.categories.includes(decodedCategory)
+          );
+        }
+      }
       return books.value;
-    } else {
-      return books.value.filter((book) =>
-        book.categories.includes(decodedCategory)
-      );
-    }
-  }
-  return books.value;
-});
+    });
 
-const rowsPerPage = ref(12);
-const currentPage = ref(0);
-const sortOrder = ref('');
+    const rowsPerPage = ref(12);
+    const currentPage = ref(0);
+    const sortOrder = ref('');
 
-const sortOptions = [
-  { label: 'A-Z', value: 'a-z' },
-  { label: 'Z-A', value: 'z-a' },
-  { label: 'Menor Preço', value: 'low-high' },
-  { label: 'Maior Preço', value: 'high-low' },
-];
+    const sortOptions = [
+      { label: 'A-Z', value: 'a-z' },
+      { label: 'Z-A', value: 'z-a' },
+      { label: 'Menor Preço', value: 'low-high' },
+      { label: 'Maior Preço', value: 'high-low' },
+    ];
 
-const sortedBooks = computed(() => {
-  if (!sortOrder.value) {
-    return filteredBooks.value;
-  }
-  return [...filteredBooks.value].sort((a, b) => {
-    switch (sortOrder.value) {
-      case 'a-z':
-        return a.title.localeCompare(b.title);
-      case 'z-a':
-        return b.title.localeCompare(a.title);
-      case 'low-high':
-        return a.rentalPricePerWeek - b.rentalPricePerWeek;
-      case 'high-low':
-        return b.rentalPricePerWeek - a.rentalPricePerWeek;
-      default:
-        return 0;
-    }
-  });
-});
+    const sortedBooks = computed(() => {
+      if (!sortOrder.value) {
+        return filteredBooks.value;
+      }
+      return [...filteredBooks.value].sort((a, b) => {
+        switch (sortOrder.value) {
+          case 'a-z':
+            return a.title.localeCompare(b.title);
+          case 'z-a':
+            return b.title.localeCompare(a.title);
+          case 'low-high':
+            return a.rentalPricePerWeek - b.rentalPricePerWeek;
+          case 'high-low':
+            return b.rentalPricePerWeek - a.rentalPricePerWeek;
+          default:
+            return 0;
+        }
+      });
+    });
 
-const paginatedBooks = computed(() => {
-  const start = currentPage.value * rowsPerPage.value;
-  const end = start + rowsPerPage.value;
-  return sortedBooks.value.slice(start, end);
-});
+    const paginatedBooks = computed(() => {
+      const start = currentPage.value * rowsPerPage.value;
+      const end = start + rowsPerPage.value;
+      return sortedBooks.value.slice(start, end);
+    });
 
-const onPageChange = (event: { page: number }) => {
-  currentPage.value = event.page;
+    const onPageChange = (event: { page: number }) => {
+      currentPage.value = event.page;
+    };
+
+    const loadBooks = async () => {
+      await bookStore.loadBooks();
+    };
+
+    onMounted(loadBooks);
+
+    watch(category, loadBooks);
+
+    watch(route, () => {
+      sortOrder.value = '';
+      currentPage.value = 0;
+    });
+
+    return {
+      title,
+      sortOrder,
+      sortOptions,
+      paginatedBooks,
+      filteredBooks,
+      rowsPerPage,
+      currentPage,
+      onPageChange,
+    };
+  },
 };
-
-const loadBooks = async () => {
-  await bookStore.loadBooks();
-};
-
-onMounted(loadBooks);
-
-watch(category, loadBooks);
-
-watch(route, () => {
-  sortOrder.value = '';
-  currentPage.value = 0;
-});
 </script>
 
 <style scoped lang="scss">
