@@ -1,10 +1,10 @@
 <template>
   <DefaultLayout>
-    <BookList />
+    <CheckoutApp />
   </DefaultLayout>
 </template>
 
 <script lang="ts" setup>
+import CheckoutApp from '../components/CheckoutApp.vue';
 import DefaultLayout from '../layouts/DefaultLayout.vue';
-import BookList from '../components/BookList.vue';
 </script>

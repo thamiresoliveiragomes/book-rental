@@ -1,10 +1,10 @@
 <template>
   <DefaultLayout>
-    <BookList />
+    <CartApp />
   </DefaultLayout>
 </template>
 
 <script lang="ts" setup>
 import DefaultLayout from '../layouts/DefaultLayout.vue';
-import BookList from '../components/BookList.vue';
+import CartApp from '../components/CartApp.vue';
 </script>

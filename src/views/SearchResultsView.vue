@@ -1,10 +1,10 @@
 <template>
   <DefaultLayout>
-    <BookList />
+    <SearchResults />
   </DefaultLayout>
 </template>
 
 <script lang="ts" setup>
 import DefaultLayout from '../layouts/DefaultLayout.vue';
-import BookList from '../components/BookList.vue';
+import SearchResults from '../components/SearchResults.vue';
 </script>
