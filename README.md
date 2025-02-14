@@ -57,7 +57,7 @@ Antes de começar, certifique-se de ter instalado:
 ✅ Busca por título, autor ou categoria  
 ✅ Adição de livros ao carrinho  
 ✅ Paginação para melhor navegação  
-✅ Estilização com PrimeVue
+✅ Estilização com PrimeVue  
 ✅ Opção de mudança de idioma
 
 ## 📜 Licença
