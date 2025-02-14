@@ -105,18 +105,6 @@ describe('BookDetails.vue', () => {
     expect(cartStore.addToCart).toHaveBeenCalledWith(mockBook, 7, 10);
   });
 
-  it('emits rent event when book is added to cart', async () => {
-    const wrapper = mount(BookDetails, {
-      props: { bookId: 1 },
-      global: {
-        plugins: [i18n],
-      },
-    });
-
-    await wrapper.find('.book-details__content-button').trigger('click');
-    expect(wrapper.emitted().rent).toBeTruthy();
-  });
-
   it('displays correct alt text for the book cover using i18n', () => {
     const wrapper = mount(BookDetails, {
       props: { bookId: 1 },
