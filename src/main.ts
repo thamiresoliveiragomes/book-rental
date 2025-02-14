@@ -14,6 +14,9 @@ app.use(createPinia());
 app.use(PrimeVue, {
   theme: {
     preset: Material,
+    options: {
+      darkModeSelector: 'none',
+    },
   },
 });
 app.use(ToastService);
