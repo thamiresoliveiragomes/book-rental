@@ -60,7 +60,7 @@ export default {
       default: null,
     },
   },
-  setup(props, { emit }) {
+  setup(props) {
     const bookStore = useBookStore();
     const cartStore = useCartStore();
     const route = useRoute();
@@ -78,7 +78,6 @@ export default {
           rentalDuration.value,
           rentalPrice.value
         );
-        emit('rent');
       }
     };
 
