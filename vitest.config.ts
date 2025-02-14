@@ -12,6 +12,13 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'html', 'json'],
       all: true,
+      exclude: [
+        'src/i18n/**',
+        'src/locales/**',
+        'src/models/**',
+        '**/*.config.*',
+        '**/*.d.ts',
+      ],
     },
   },
   plugins: [vue()],
