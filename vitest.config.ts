@@ -16,6 +16,7 @@ export default defineConfig({
         'src/i18n/**',
         'src/locales/**',
         'src/models/**',
+        'src/main.ts',
         '**/*.config.*',
         '**/*.d.ts',
       ],

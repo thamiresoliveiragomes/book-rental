@@ -6,16 +6,8 @@
 </template>
 
 <script setup>
-import { defineComponent } from 'vue';
 import { Toast } from 'primevue';
-
-defineComponent({
-  setup() {
-    return {};
-  },
-});
 </script>
-
 <style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
