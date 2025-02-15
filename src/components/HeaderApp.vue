@@ -1,9 +1,9 @@
 <template>
   <header class="header">
-    <div class="logo" @click="goToHome">
+    <div class="header__logo" @click="goToHome">
       <img src="../assets/logo.png" alt="Logo" />
     </div>
-    <div class="search-bar">
+    <div class="searchbar">
       <SearchBar />
     </div>
     <div class="cart-icon" @click="goToCart">
@@ -53,35 +53,30 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   background-color: #fff;
-}
 
-.logo img {
-  height: 40px;
-  cursor: pointer;
-}
-
-.search-bar input {
-  width: 300px;
-  padding: 5px;
+  &__logo img {
+    height: 40px;
+    cursor: pointer;
+  }
 }
 
 .cart-icon {
   position: relative;
   font-size: 24px;
   cursor: pointer;
-}
 
-.cart-icon i {
-  font-size: 32px;
-  color: #333;
-  transition: color 0.3s ease-in-out;
+  i {
+    font-size: 32px;
+    color: #000;
+    transition: color 0.3s ease-in-out;
+  }
 }
 
 .cart-badge {
@@ -93,5 +88,20 @@ export default defineComponent({
   font-size: 12px;
   padding: 5px 8px;
   border-radius: 50%;
+}
+
+.searchbar {
+  width: 100%;
+
+  input {
+    width: 300px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchbar {
+    display: none;
+  }
 }
 </style>

@@ -2,14 +2,13 @@
   <div class="book-list">
     <h1 class="book-list__title">{{ title }}</h1>
     <div class="book-list__controls">
-      <label for="sort">Ordenar por:</label>
       <Dropdown
         id="sort"
         v-model="sortOrder"
         :options="sortOptions"
         option-label="label"
         option-value="value"
-        placeholder="Selecione uma opção"
+        :placeholder="$t('filter.sort')"
       />
     </div>
     <div class="book-list__items">
@@ -80,11 +79,14 @@ export default {
     const currentPage = ref(0);
     const sortOrder = ref('');
 
+    const lowHigh = t('filter.lowHigh');
+    const highLow = t('filter.highLow');
+
     const sortOptions = [
-      { label: 'A-Z', value: 'a-z' },
-      { label: 'Z-A', value: 'z-a' },
-      { label: 'Menor Preço', value: 'low-high' },
-      { label: 'Maior Preço', value: 'high-low' },
+      { label: 'a-z', value: 'a-z' },
+      { label: 'z-a', value: 'z-a' },
+      { label: lowHigh, value: 'low-high' },
+      { label: highLow, value: 'high-low' },
     ];
 
     const sortedBooks = computed(() => {
@@ -152,6 +154,19 @@ export default {
 
   &__controls {
     margin: 20px 80px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    .p-select {
+      border: 1px solid #000;
+      border-radius: 20px;
+
+      &.p-focus {
+        border-color: #000;
+        outline-color: #000;
+      }
+    }
   }
 
   &__items {

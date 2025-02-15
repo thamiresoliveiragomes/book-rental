@@ -1,11 +1,11 @@
 <template>
-  <div class="search-bar">
+  <div class="searchbar__container">
     <span class="p-input-icon-right">
       <i class="pi pi-search" @click="searchBooks"></i>
       <InputText
         v-model="searchQuery"
         :placeholder="$t('search.placeholder')"
-        class="p-inputtext-lg search-bar__input"
+        class="p-inputtext-lg searchbar__input"
         @keyup.enter="searchBooks"
       />
     </span>
@@ -40,15 +40,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.search-bar {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
+.searchbar {
+  &__container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    span {
+      width: 50%;
+    }
+  }
 
   &__input {
     width: 100%;
-    min-width: 500px;
     border-radius: 30px;
     background-color: white;
     border: 1px solid #000;
