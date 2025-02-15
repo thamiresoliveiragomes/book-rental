@@ -14,6 +14,7 @@ describe('SearchBar.vue', () => {
   });
 
   let i18n;
+  let wrapper;
 
   beforeEach(() => {
     i18n = createI18n({
@@ -23,23 +24,18 @@ describe('SearchBar.vue', () => {
         pt: { search: { placeholder: 'Procurar livros' } },
       },
     });
+    wrapper = mount(SearchBar, {
+      global: {
+        plugins: [router, i18n, PrimeVue],
+      },
+    });
   });
 
   it('renders the search bar', () => {
-    const wrapper = mount(SearchBar, {
-      global: {
-        plugins: [router, i18n, PrimeVue],
-      },
-    });
-    expect(wrapper.find('.search-bar').exists()).toBe(true);
+    expect(wrapper.find('.searchbar__container').exists()).toBe(true);
   });
 
   it('updates searchQuery when input changes', async () => {
-    const wrapper = mount(SearchBar, {
-      global: {
-        plugins: [router, i18n, PrimeVue],
-      },
-    });
     const input = wrapper.find('input');
     await input.setValue('test query');
     expect(wrapper.vm.searchQuery).toBe('test query');
@@ -47,11 +43,6 @@ describe('SearchBar.vue', () => {
 
   it('navigates to search page on searchBooks call', async () => {
     const push = vi.spyOn(router, 'push');
-    const wrapper = mount(SearchBar, {
-      global: {
-        plugins: [router, i18n, PrimeVue],
-      },
-    });
     wrapper.vm.searchQuery = 'test query';
     await wrapper.vm.searchBooks();
     expect(push).toHaveBeenCalledWith({
@@ -62,11 +53,6 @@ describe('SearchBar.vue', () => {
 
   it('does not navigate if searchQuery is empty', async () => {
     const push = vi.spyOn(router, 'push');
-    const wrapper = mount(SearchBar, {
-      global: {
-        plugins: [router, i18n, PrimeVue],
-      },
-    });
     wrapper.vm.searchQuery = '';
     await wrapper.vm.searchBooks();
     expect(push).toHaveBeenCalled();

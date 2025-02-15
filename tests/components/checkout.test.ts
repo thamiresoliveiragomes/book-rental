@@ -12,6 +12,7 @@ describe('CheckoutApp.vue', () => {
   let i18n;
   let router;
   let cartStore;
+  let wrapper;
 
   beforeEach(() => {
     setActivePinia(createPinia());
@@ -64,35 +65,25 @@ describe('CheckoutApp.vue', () => {
     cartStore.$patch({
       totalCartPrice: 100.0,
     });
-  });
 
-  it('renders the checkout title', () => {
-    const wrapper = mount(CheckoutApp, {
+    wrapper = mount(CheckoutApp, {
       global: {
         plugins: [router, i18n, PrimeVue, ToastService],
       },
     });
+  });
+
+  it('renders the checkout title', () => {
     expect(wrapper.find('.checkout__title').text()).toContain('CHECKOUT');
   });
 
   it('displays the total cart price', () => {
-    const wrapper = mount(CheckoutApp, {
-      global: {
-        plugins: [router, i18n, PrimeVue, ToastService],
-      },
-    });
     expect(wrapper.find('.checkout__footer p').text()).toContain(
       'Total: R$ 0.00'
     );
   });
 
   it('validates email input', async () => {
-    const wrapper = mount(CheckoutApp, {
-      global: {
-        plugins: [router, i18n, PrimeVue, ToastService],
-      },
-    });
-
     const emailInput = wrapper.find('#email');
     await emailInput.setValue('invalid-email');
     expect(wrapper.vm.validateEmail(wrapper.vm.email)).toBe(false);
@@ -103,11 +94,6 @@ describe('CheckoutApp.vue', () => {
 
   it('navigates to cart page on cancel button click', async () => {
     const push = vi.spyOn(router, 'push');
-    const wrapper = mount(CheckoutApp, {
-      global: {
-        plugins: [router, i18n, PrimeVue, ToastService],
-      },
-    });
 
     const cancelButton = wrapper.find('.p-button-secondary');
     await cancelButton.trigger('click');
@@ -116,11 +102,6 @@ describe('CheckoutApp.vue', () => {
 
   it('completes purchase and clears cart', async () => {
     const clearCart = vi.spyOn(cartStore, 'clearCart');
-    const wrapper = mount(CheckoutApp, {
-      global: {
-        plugins: [router, i18n, PrimeVue, ToastService],
-      },
-    });
 
     wrapper.vm.email = 'test@example.com';
     wrapper.vm.cardExpirationDate = '12/34';

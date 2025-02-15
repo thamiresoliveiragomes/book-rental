@@ -22,6 +22,7 @@ vi.mock('primevue/dialog', () => ({
 }));
 
 describe('BookCard.vue', () => {
+  let wrapper;
   const mockBook = {
     id: 1,
     title: 'Test Book',
@@ -64,16 +65,19 @@ describe('BookCard.vue', () => {
     };
     vi.mocked(useRouter).mockReturnValue(router);
     vi.mocked(useToast).mockReturnValue(toast);
-  });
 
-  it('renders book details correctly', () => {
-    const wrapper = mount(BookCard, {
+    wrapper = mount(BookCard, {
       props: { book: mockBook },
       global: {
         plugins: [i18n],
+        stubs: {
+          Dialog: true,
+        },
       },
     });
+  });
 
+  it('renders book details correctly', () => {
     expect(wrapper.find('h2').text()).toBe(mockBook.title);
     expect(wrapper.find('p').text()).toBe(mockBook.author);
     expect(wrapper.find('.book-card__image').attributes('alt')).toBe(
@@ -85,31 +89,11 @@ describe('BookCard.vue', () => {
   });
 
   it('opens modal when rent button is clicked', async () => {
-    const wrapper = mount(BookCard, {
-      props: { book: mockBook },
-      global: {
-        plugins: [i18n],
-        stubs: {
-          Dialog: true,
-        },
-      },
-    });
-
     await wrapper.find('.book-card__button').trigger('click');
     expect(wrapper.vm.isModalVisible).toBe(true);
   });
 
   it('closes modal and shows success toast when rent event is emitted', async () => {
-    const wrapper = mount(BookCard, {
-      props: { book: mockBook },
-      global: {
-        plugins: [i18n],
-        stubs: {
-          Dialog: true,
-        },
-      },
-    });
-
     expect(wrapper.exists()).toBe(true);
 
     await wrapper.find('.book-card__button').trigger('click');
@@ -117,13 +101,6 @@ describe('BookCard.vue', () => {
   });
 
   it('navigates to the book details page when the card is clicked', async () => {
-    const wrapper = mount(BookCard, {
-      props: { book: mockBook },
-      global: {
-        plugins: [i18n],
-      },
-    });
-
     await wrapper.trigger('click');
     expect(router.push).toHaveBeenCalledWith(`/product/${mockBook.id}`);
   });

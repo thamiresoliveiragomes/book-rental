@@ -34,6 +34,7 @@ vi.mock('primevue/usetoast', () => ({
 }));
 
 describe('BookList.vue', () => {
+  let wrapper;
   const mockBooks = [
     {
       id: 1,
@@ -79,10 +80,7 @@ describe('BookList.vue', () => {
     };
     vi.mocked(useBookStore).mockReturnValue(bookStore);
     vi.mocked(useRouter).mockReturnValue(route);
-  });
-
-  it('renders book list correctly', async () => {
-    const wrapper = mount(BookList, {
+    wrapper = mount(BookList, {
       global: {
         plugins: [i18n],
         stubs: {
@@ -91,7 +89,9 @@ describe('BookList.vue', () => {
         },
       },
     });
+  });
 
+  it('renders book list correctly', async () => {
     expect(wrapper.findAll('.book-list__items .book-card').length).toBe(
       mockBooks.length
     );
@@ -100,16 +100,6 @@ describe('BookList.vue', () => {
   it('filters books by category', async () => {
     route = { params: { category: 'Mais Vendidos' } };
     vi.mocked(useRouter).mockReturnValue(route);
-
-    const wrapper = mount(BookList, {
-      global: {
-        plugins: [i18n],
-        stubs: {
-          Dropdown,
-          Paginator,
-        },
-      },
-    });
 
     await wrapper.vm.$nextTick();
 
@@ -120,16 +110,6 @@ describe('BookList.vue', () => {
     route = { params: { category: 'Ver Todos' } };
     vi.mocked(useRouter).mockReturnValue(route);
 
-    const wrapper = mount(BookList, {
-      global: {
-        plugins: [i18n],
-        stubs: {
-          Dropdown,
-          Paginator,
-        },
-      },
-    });
-
     await wrapper.findComponent(Dropdown).vm.$emit('update:modelValue', 'a-z');
     await wrapper.vm.$nextTick();
 
@@ -139,16 +119,6 @@ describe('BookList.vue', () => {
   });
 
   it('calls loadBooks when mounted', async () => {
-    mount(BookList, {
-      global: {
-        plugins: [i18n],
-        stubs: {
-          Dropdown,
-          Paginator,
-        },
-      },
-    });
-
     expect(bookStore.loadBooks).toHaveBeenCalled();
   });
 });

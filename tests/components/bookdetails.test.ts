@@ -13,6 +13,7 @@ vi.mock('vue-router', () => ({
 }));
 
 describe('BookDetails.vue', () => {
+  let wrapper;
   const mockBook = {
     id: 1,
     title: 'Test Book',
@@ -61,16 +62,15 @@ describe('BookDetails.vue', () => {
     vi.mocked(useBookStore).mockReturnValue(bookStore);
     vi.mocked(useCartStore).mockReturnValue(cartStore);
     vi.mocked(useRoute).mockReturnValue(route);
-  });
-
-  it('renders book details correctly', () => {
-    const wrapper = mount(BookDetails, {
+    wrapper = mount(BookDetails, {
       props: { bookId: 1 },
       global: {
         plugins: [i18n],
       },
     });
+  });
 
+  it('renders book details correctly', () => {
     expect(wrapper.find('h1').text()).toBe(mockBook.title);
     expect(wrapper.find('p').text()).toBe(mockBook.author);
     expect(
@@ -79,13 +79,6 @@ describe('BookDetails.vue', () => {
   });
 
   it('updates rental price correctly', async () => {
-    const wrapper = mount(BookDetails, {
-      props: { bookId: 1 },
-      global: {
-        plugins: [i18n],
-      },
-    });
-
     await wrapper.findAll('button')[1].trigger('click');
     expect(wrapper.vm.rentalPrice).toBe(20);
 
@@ -94,25 +87,11 @@ describe('BookDetails.vue', () => {
   });
 
   it('adds book to cart correctly', async () => {
-    const wrapper = mount(BookDetails, {
-      props: { bookId: 1 },
-      global: {
-        plugins: [i18n],
-      },
-    });
-
     await wrapper.find('.book-details__content-button').trigger('click');
     expect(cartStore.addToCart).toHaveBeenCalledWith(mockBook, 7, 10);
   });
 
   it('displays correct alt text for the book cover using i18n', () => {
-    const wrapper = mount(BookDetails, {
-      props: { bookId: 1 },
-      global: {
-        plugins: [i18n],
-      },
-    });
-
     expect(wrapper.find('img').attributes('alt')).toBe('Book Cover Image');
   });
 });

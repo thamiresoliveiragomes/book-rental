@@ -13,6 +13,7 @@ describe('SearchResults.vue', () => {
   let i18n;
   let router;
   let bookStore;
+  let wrapper;
 
   beforeEach(() => {
     setActivePinia(createPinia());
@@ -56,14 +57,15 @@ describe('SearchResults.vue', () => {
         rentalPricePerWeek: 15.0,
       },
     ];
-  });
 
-  it('renders the search results title', () => {
-    const wrapper = mount(SearchResults, {
+    wrapper = mount(SearchResults, {
       global: {
         plugins: [router, i18n, PrimeVue, ToastService],
       },
     });
+  });
+
+  it('renders the search results title', () => {
     expect(wrapper.find('.book-list__title').text()).toContain(
       'SEARCH RESULTS'
     );
@@ -73,12 +75,6 @@ describe('SearchResults.vue', () => {
     router.push({ path: '/search', query: { q: 'nonexistent' } });
     await router.isReady();
 
-    const wrapper = mount(SearchResults, {
-      global: {
-        plugins: [router, i18n, PrimeVue, ToastService],
-      },
-    });
-
     expect(wrapper.find('.book-list__items').exists()).toBe(false);
     expect(wrapper.find('.book-list').text()).toContain('No results found');
   });
@@ -86,12 +82,6 @@ describe('SearchResults.vue', () => {
   it('displays book cards when books match the search query', async () => {
     router.push({ path: '/search', query: { q: 'Book' } });
     await router.isReady();
-
-    const wrapper = mount(SearchResults, {
-      global: {
-        plugins: [router, i18n, PrimeVue, ToastService],
-      },
-    });
 
     expect(wrapper.findAllComponents(BookCard).length).toBe(2);
   });

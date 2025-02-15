@@ -11,6 +11,7 @@ describe('HeaderApp.vue', () => {
   let router;
   let cartStore;
   let i18n;
+  let wrapper;
 
   beforeEach(() => {
     setActivePinia(createPinia());
@@ -48,47 +49,33 @@ describe('HeaderApp.vue', () => {
         { id: 2, title: 'Book Two' },
       ],
     });
-  });
 
-  it('renders the header', () => {
-    const wrapper = mount(HeaderApp, {
+    wrapper = mount(HeaderApp, {
       global: {
         plugins: [router, i18n, PrimeVue],
       },
     });
+  });
+
+  it('renders the header', () => {
     expect(wrapper.find('.header').exists()).toBe(true);
   });
 
   it('navigates to home page on logo click', async () => {
     const push = vi.spyOn(router, 'push');
-    const wrapper = mount(HeaderApp, {
-      global: {
-        plugins: [router, i18n, PrimeVue],
-      },
-    });
 
-    await wrapper.find('.logo').trigger('click');
+    await wrapper.find('.header__logo').trigger('click');
     expect(push).toHaveBeenCalledWith('/');
   });
 
   it('navigates to cart page on cart icon click', async () => {
     const push = vi.spyOn(router, 'push');
-    const wrapper = mount(HeaderApp, {
-      global: {
-        plugins: [router, i18n, PrimeVue],
-      },
-    });
 
     await wrapper.find('.cart-icon').trigger('click');
     expect(push).toHaveBeenCalledWith('/cart');
   });
 
   it('displays the correct number of items in the cart', () => {
-    const wrapper = mount(HeaderApp, {
-      global: {
-        plugins: [router, i18n, PrimeVue],
-      },
-    });
     expect(wrapper.find('.cart-badge').text()).toBe('2');
   });
 });

@@ -11,6 +11,7 @@ describe('MenuBar.vue', () => {
   let i18n;
   let router;
   let bookStore;
+  let wrapper;
 
   beforeEach(() => {
     Object.defineProperty(window, 'matchMedia', {
@@ -68,14 +69,14 @@ describe('MenuBar.vue', () => {
     bookStore.$patch({
       allCategories: ['Category One', 'Category Two'],
     });
-  });
-
-  it('renders the menu bar', () => {
-    const wrapper = mount(MenuBar, {
+    wrapper = mount(MenuBar, {
       global: {
         plugins: [router, i18n, PrimeVue],
       },
     });
+  });
+
+  it('renders the menu bar', () => {
     expect(wrapper.find('.p-menubar').exists()).toBe(true);
   });
 });
