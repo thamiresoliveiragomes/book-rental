@@ -190,9 +190,13 @@ export default {
         font-size: 28px;
         border-radius: 40px;
         padding-left: 30px;
+        border: 1px solid #000;
+        outline: #000;
 
         &:focus {
           margin-top: 4px;
+          border: 1px solid #000 !important;
+          outline: #000 !important;
         }
       }
 
@@ -202,6 +206,7 @@ export default {
 
       .p-floatlabel:has(input:focus) label {
         font-size: 20px;
+        color: #000;
       }
     }
   }

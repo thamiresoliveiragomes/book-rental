@@ -65,11 +65,36 @@ export default {
   &__title {
     margin: 30px;
   }
+
   &__items {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 75px;
-    margin: 8px 80px;
+    margin: 0px 80px 40px;
+  }
+
+  &__paginator {
+    margin-bottom: 20px;
+  }
+
+  ::v-deep(.p-paginator-page) {
+    color: #000;
+  }
+
+  ::v-deep(
+    .p-paginator-page:not(.p-disabled):not(.p-paginator-page-selected):hover
+  ) {
+    color: #000;
+    background: #efefef;
+  }
+
+  ::v-deep(.p-paginator-page-selected) {
+    background: #000;
+    color: #fff;
+  }
+
+  ::v-deep(.p-paginator-pages) {
+    gap: 20px;
   }
 }
 </style>

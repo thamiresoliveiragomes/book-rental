@@ -65,6 +65,10 @@ export default defineComponent({
       border: 1px solid #000;
       padding: 2px;
     }
+
+    i {
+      font-size: 24px;
+    }
   }
 
   &__social {
