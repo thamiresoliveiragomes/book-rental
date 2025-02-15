@@ -173,6 +173,7 @@ export default {
   }
 
   &__form {
+    margin: 24px 0;
     width: 100%;
 
     &-title {
@@ -253,6 +254,34 @@ export default {
           color: #fff;
           border: 1px solid #000;
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &__form {
+      &-item span {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+
+    &__main {
+      &-image {
+        display: none;
+      }
+    }
+
+    &__footer {
+      gap: 12px;
+      flex-direction: column;
+
+      &-buttons {
+        flex-direction: column;
+        gap: 12px;
       }
     }
   }

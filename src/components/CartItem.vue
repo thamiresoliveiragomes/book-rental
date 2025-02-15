@@ -15,7 +15,6 @@
           <p>{{ item.book.author }}</p>
         </div>
       </div>
-      <div class="cart-item__content-author"></div>
       <div class="cart-item__content-rental">
         <div class="cart-item__content-rental-buttons">
           <Button
@@ -143,6 +142,29 @@ export default {
           &.p-button-success {
             background: #000;
             color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 24px;
+
+    &__content {
+      gap: 12px;
+      &-rental {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+
+        &-buttons {
+          gap: 30px;
+          width: 100%;
+
+          .p-button {
+            width: 100%;
           }
         }
       }

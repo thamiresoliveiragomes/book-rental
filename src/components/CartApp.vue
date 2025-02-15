@@ -119,5 +119,17 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    &__checkout {
+      flex-direction: column;
+      gap: 12px;
+
+      &-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  }
 }
 </style>

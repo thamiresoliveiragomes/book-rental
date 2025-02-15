@@ -99,7 +99,7 @@ export default defineComponent({
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .searchbar {
     display: none;
   }

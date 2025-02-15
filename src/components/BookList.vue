@@ -199,5 +199,15 @@ export default {
   ::v-deep(.p-paginator-pages) {
     gap: 20px;
   }
+
+  @media screen and (max-width: 768px) {
+    &__items {
+      margin: 0px 48px 40px;
+    }
+
+    &__controls {
+      margin: 20px 48px;
+    }
+  }
 }
 </style>

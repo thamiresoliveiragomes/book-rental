@@ -133,6 +133,7 @@ export default {
     &-rental {
       display: flex;
       justify-content: space-between;
+      gap: 8px;
     }
 
     .p-button {
@@ -140,7 +141,7 @@ export default {
       border: 1px solid #000;
       border-radius: 20px;
       color: #000;
-      font-size: 24px;
+      font-size: 22px;
       padding: 8px 32px;
 
       &.p-button-success,
@@ -167,8 +168,29 @@ export default {
   &__image {
     padding: 0 48px;
     img {
-      width: 275px;
+      width: 180px;
       height: auto;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+
+    &__content {
+      padding-right: 0;
+      gap: 12px;
+
+      .p-button {
+        font-size: 16px;
+        padding: 8px 24px;
+      }
+    }
+
+    &__image {
+      width: 145px;
+      display: flex;
+      justify-content: center;
     }
   }
 }
