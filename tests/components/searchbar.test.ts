@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createI18n } from 'vue-i18n';
 import PrimeVue from 'primevue/config';
-import SearchBar from '../src/components/SearchBar.vue';
+import SearchBar from '../../src/components/SearchBar.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 describe('SearchBar.vue', () => {

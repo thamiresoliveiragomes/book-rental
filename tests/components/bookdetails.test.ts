@@ -1,13 +1,13 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { createI18n } from 'vue-i18n';
-import BookDetails from '../src/components/BookDetails.vue';
-import { useBookStore } from '../src/stores/bookStore';
-import { useCartStore } from '../src/stores/cartStore';
+import BookDetails from '../../src/components/BookDetails.vue';
+import { useBookStore } from '../../src/stores/bookStore';
+import { useCartStore } from '../../src/stores/cartStore';
 import { useRoute } from 'vue-router';
 
-vi.mock('../src/stores/bookStore');
-vi.mock('../src/stores/cartStore');
+vi.mock('../../src/stores/bookStore');
+vi.mock('../../src/stores/cartStore');
 vi.mock('vue-router', () => ({
   useRoute: vi.fn(),
 }));

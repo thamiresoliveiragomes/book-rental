@@ -3,9 +3,9 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { createI18n } from 'vue-i18n';
 import { createRouter, createWebHistory } from 'vue-router';
 import PrimeVue from 'primevue/config';
-import MenuBar from '../src/components/MenuBar.vue';
+import MenuBar from '../../src/components/MenuBar.vue';
 import { createPinia, setActivePinia } from 'pinia';
-import { useBookStore } from '../src/stores/bookStore';
+import { useBookStore } from '../../src/stores/bookStore';
 
 describe('MenuBar.vue', () => {
   let i18n;
@@ -13,15 +13,12 @@ describe('MenuBar.vue', () => {
   let bookStore;
 
   beforeEach(() => {
-    // Mock window.matchMedia
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
       value: vi.fn().mockImplementation((query) => ({
         matches: false,
         media: query,
         onchange: null,
-        addListener: vi.fn(), // Deprecated
-        removeListener: vi.fn(), // Deprecated
         addEventListener: vi.fn(),
         removeEventListener: vi.fn(),
         dispatchEvent: vi.fn(),

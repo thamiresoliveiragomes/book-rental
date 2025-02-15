@@ -3,9 +3,9 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { createRouter, createWebHistory } from 'vue-router';
 import { createI18n } from 'vue-i18n';
 import PrimeVue from 'primevue/config';
-import HeaderApp from '../src/components/HeaderApp.vue';
+import HeaderApp from '../../src/components/HeaderApp.vue';
 import { createPinia, setActivePinia } from 'pinia';
-import { useCartStore } from '../src/stores/cartStore';
+import { useCartStore } from '../../src/stores/cartStore';
 
 describe('HeaderApp.vue', () => {
   let router;

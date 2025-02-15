@@ -1,13 +1,13 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createI18n } from 'vue-i18n';
-import BookList from '../src/components/BookList.vue';
-import { useBookStore } from '../src/stores/bookStore';
+import BookList from '../../src/components/BookList.vue';
+import { useBookStore } from '../../src/stores/bookStore';
 import { useRouter } from 'vue-router';
 import Dropdown from 'primevue/dropdown';
 import Paginator from 'primevue/paginator';
 
-vi.mock('../src/stores/bookStore');
+vi.mock('../../src/stores/bookStore');
 vi.mock('vue-router', () => {
   return {
     useRouter: vi.fn(() => ({

@@ -4,10 +4,10 @@ import { createI18n } from 'vue-i18n';
 import { createRouter, createWebHistory } from 'vue-router';
 import PrimeVue from 'primevue/config';
 import ToastService from 'primevue/toastservice';
-import SearchResults from '../src/components/SearchResults.vue';
-import BookCard from '../src/components/BookCard.vue';
+import SearchResults from '../../src/components/SearchResults.vue';
+import BookCard from '../../src/components/BookCard.vue';
 import { createPinia, setActivePinia } from 'pinia';
-import { useBookStore } from '../src/stores/bookStore';
+import { useBookStore } from '../../src/stores/bookStore';
 
 describe('SearchResults.vue', () => {
   let i18n;

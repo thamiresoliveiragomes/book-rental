@@ -4,9 +4,9 @@ import { createI18n } from 'vue-i18n';
 import { createRouter, createWebHistory } from 'vue-router';
 import PrimeVue from 'primevue/config';
 import ToastService from 'primevue/toastservice';
-import CheckoutApp from '../src/components/CheckoutApp.vue';
+import CheckoutApp from '../../src/components/CheckoutApp.vue';
 import { createPinia, setActivePinia } from 'pinia';
-import { useCartStore } from '../src/stores/cartStore';
+import { useCartStore } from '../../src/stores/cartStore';
 
 describe('CheckoutApp.vue', () => {
   let i18n;

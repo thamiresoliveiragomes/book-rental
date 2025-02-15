@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createI18n } from 'vue-i18n';
-import BookCard from '../src/components/BookCard.vue';
+import BookCard from '../../src/components/BookCard.vue';
 import { useRouter } from 'vue-router';
 import { useToast } from 'primevue/usetoast';
 

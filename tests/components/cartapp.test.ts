@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
-import Cart from '../src/components/CartApp.vue';
+import Cart from '../../src/components/CartApp.vue';
 import { createTestingPinia } from '@pinia/testing';
-import { useCartStore } from '../src/stores/cartStore';
+import { useCartStore } from '../../src/stores/cartStore';
 import { createI18n } from 'vue-i18n';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -38,7 +38,7 @@ describe('Cart.vue', () => {
     });
     cartStore = useCartStore();
     cartStore.cart = [];
-    cartStore.totalCartPrice = 0; // Garantir que totalCartPrice esteja definido
+    cartStore.totalCartPrice = 0;
   });
 
   it('renders cart title in uppercase', () => {

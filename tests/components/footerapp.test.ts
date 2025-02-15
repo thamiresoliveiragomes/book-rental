@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
-import FooterApp from '../src/components/FooterApp.vue';
+import FooterApp from '../../src/components/FooterApp.vue';
 import { createI18n } from 'vue-i18n';
 
 describe('FooterApp.vue', () => {
