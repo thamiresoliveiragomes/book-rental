@@ -48,5 +48,10 @@
   },
   "footer": {
     "text": "2025 - All rights reserved"
+  },
+  "filter": {
+    "sort": "sort by",
+    "lowHigh": "lowest price",
+    "highLow": "highest price"
   }
 }
