@@ -11,13 +11,16 @@ import CarouselImage from '../components/CarouselImage.vue';
 import CarouselCard from '../components/CarouselCard.vue';
 
 const carouselItems = [
-  { coverImage: './src/assets/banner/nosferatu.png', route: '/product/8' },
   {
-    coverImage: './src/assets/banner/lançamentos.png',
+    coverImage: 'banner/nosferatu.png',
+    route: '/product/8',
+  },
+  {
+    coverImage: 'banner/lançamentos.png',
     route: '/category/Lan%25C3%25A7amentos',
   },
   {
-    coverImage: './src/assets/banner/hobbity.png',
+    coverImage: 'banner/hobbity.png',
     route: '/product/6',
   },
 ];

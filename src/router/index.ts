@@ -29,7 +29,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const cartStore = useCartStore();
   if (to.path === '/checkout' && cartStore.cart.length === 0) {
     next('/');

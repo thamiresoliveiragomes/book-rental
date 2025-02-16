@@ -1,5 +1,5 @@
 function getLocalCoverImagePath(id: number, title: string): string {
-  return `/src/assets/book-cover/${id}. ${title}.png`;
+  return `/book-cover/${id}. ${title}.png`;
 }
 
 export const booksData = [
