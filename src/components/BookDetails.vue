@@ -161,7 +161,7 @@ export default {
       border-radius: 20px;
       color: #000;
       font-size: 22px;
-      padding: 8px 32px;
+      padding: 8px 24px;
 
       &.p-button-success,
       &:hover {
@@ -202,7 +202,6 @@ export default {
 
       .p-button {
         font-size: 16px;
-        padding: 8px 24px;
       }
     }
 

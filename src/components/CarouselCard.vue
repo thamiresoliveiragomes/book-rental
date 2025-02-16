@@ -12,8 +12,8 @@
       <Carousel
         v-if="!isMobile"
         :value="bestSellingBooks"
-        :num-visible="3"
-        :num-scroll="3"
+        :num-visible="4"
+        :num-scroll="4"
         :show-indicators="false"
       >
         <template #item="{ data }">
@@ -56,7 +56,7 @@ export default {
     const bestSellingBooks = computed(() => {
       return books.value
         .filter((book) => book.tags.includes('Mais Vendidos'))
-        .slice(0, 9);
+        .slice(0, 8);
     });
 
     const loadBooks = async () => {

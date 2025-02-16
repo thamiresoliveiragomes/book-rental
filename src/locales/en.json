@@ -55,6 +55,7 @@
     "highLow": "highest price"
   },
   "carouselCard": {
-    "title": "best sellers"
+    "title": "best sellers",
+    "button": "see more"
   }
 }

@@ -97,6 +97,10 @@ export default {
 .book-card {
   cursor: pointer;
 
+  &:hover {
+    text-decoration: underline;
+  }
+
   &__container {
     color: #000;
     background: #fff;
