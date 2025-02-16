@@ -71,8 +71,8 @@ describe('BookDetails.vue', () => {
   });
 
   it('renders book details correctly', () => {
-    expect(wrapper.find('h1').text()).toBe(mockBook.title);
-    expect(wrapper.find('p').text()).toBe(mockBook.author);
+    expect(wrapper.find('h2').text()).toBe(mockBook.title);
+    expect(wrapper.find('h3').text()).toBe(mockBook.author);
     expect(
       wrapper.find('.book-details__content-text p:nth-child(3)').text()
     ).toBe(mockBook.description);

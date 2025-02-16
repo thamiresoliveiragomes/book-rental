@@ -83,6 +83,7 @@ export default {
 
     p {
       font-size: 36px;
+      font-weight: 700;
     }
 
     &-buttons {

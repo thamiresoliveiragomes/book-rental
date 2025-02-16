@@ -177,8 +177,10 @@ export default {
     width: 100%;
 
     &-title {
-      margin-bottom: 32px;
       font-size: 24px;
+      h2 {
+        font-weight: 500;
+      }
     }
 
     &-item {
@@ -206,7 +208,11 @@ export default {
       }
 
       .p-floatlabel:has(input:focus) label {
-        font-size: 20px;
+        color: #000;
+      }
+
+      .p-floatlabel:has(input:-webkit-autofill) label,
+      .p-floatlabel:has(input.p-filled) label {
         color: #000;
       }
     }
@@ -221,6 +227,7 @@ export default {
 
     p {
       font-size: 36px;
+      font-weight: 700;
     }
 
     &-buttons {

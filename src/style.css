@@ -1,10 +1,38 @@
-/* CSS Reset */
+@font-face {
+  font-family: 'atyp';
+  src: url('./assets/fonts/AtypDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'atyp';
+  src: url('./assets/fonts/AtypDisplay-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'atyp';
+  src: url('./assets/fonts/AtypDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: 'atyp', sans-serif;
+}
+
+h2 {
+  font-weight: 700;
 }
 
 .p-dialog-header {
@@ -18,4 +46,12 @@
 
 .p-dialog-content {
   padding-bottom: 72px !important;
+}
+
+.p-carousel-indicator-active .p-carousel-indicator-button:hover {
+  background-color: #000 !important;
+}
+
+.p-carousel-indicator-active .p-carousel-indicator-button {
+  background-color: #000 !important;
 }
