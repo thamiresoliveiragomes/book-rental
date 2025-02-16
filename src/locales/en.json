@@ -57,5 +57,10 @@
   "carouselCard": {
     "title": "best sellers",
     "button": "see more"
+  },
+  "orderCompleted": {
+    "title": "Order Completed!",
+    "message": "Your rental was successful. Enjoy your reading!",
+    "button": "go to home"
   }
 }

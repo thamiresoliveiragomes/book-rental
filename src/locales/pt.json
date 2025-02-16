@@ -57,5 +57,10 @@
   "carouselCard": {
     "title": "mais vendidos",
     "button": "ver mais"
+  },
+  "orderCompleted": {
+    "title": "Pedido Concluído!",
+    "message": "Seu aluguel foi realizado com sucesso. Aproveite sua leitura!",
+    "button": "voltar ao início"
   }
 }

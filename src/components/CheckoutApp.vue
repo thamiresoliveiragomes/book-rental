@@ -113,7 +113,7 @@ export default {
 
     const completePurchase = () => {
       cartStore.clearCart();
-      router.push('/');
+      router.push('/order-completed');
     };
 
     const validateEmail = (email: string): boolean => {
