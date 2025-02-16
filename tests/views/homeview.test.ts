@@ -4,7 +4,7 @@ import { createPinia, setActivePinia } from 'pinia';
 import { createI18n } from 'vue-i18n';
 import HomeView from '../../src/views/HomeView.vue';
 import DefaultLayout from '../../src/layouts/DefaultLayout.vue';
-import BookList from '../../src/components/BookList.vue';
+import CarouselImage from '../../src/components/CarouselImage.vue';
 import PrimeVue from 'primevue/config';
 import { createRouter, createWebHistory } from 'vue-router';
 import ToastService from 'primevue/toastservice';
@@ -56,6 +56,6 @@ describe('HomeView.vue', () => {
 
   it('should render the default layout and book list component', () => {
     expect(wrapper.findComponent(DefaultLayout).exists()).toBe(true);
-    expect(wrapper.findComponent(BookList).exists()).toBe(true);
+    expect(wrapper.findComponent(CarouselImage).exists()).toBe(true);
   });
 });

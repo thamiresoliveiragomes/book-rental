@@ -53,5 +53,8 @@
     "sort": "sort by",
     "lowHigh": "lowest price",
     "highLow": "highest price"
+  },
+  "carouselCard": {
+    "title": "best sellers"
   }
 }

@@ -53,5 +53,9 @@
     "sort": "ordenar por",
     "lowHigh": "menor preço",
     "highLow": "maior preço"
+  },
+  "carouselCard": {
+    "title": "mais vendidos",
+    "button": "ver mais"
   }
 }
