@@ -150,10 +150,7 @@ export default {
     border-radius: 20px;
     padding: 8px;
     border: 1px solid #000;
-
-    .p-button-label {
-      font-size: 24px;
-    }
+    font-size: 22px;
 
     &:hover,
     &:focus,

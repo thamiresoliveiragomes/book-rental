@@ -15,6 +15,9 @@
       />
     </div>
   </header>
+  <div class="searchbar-mobile">
+    <SearchBar />
+  </div>
 </template>
 
 <script lang="ts">
@@ -97,11 +100,24 @@ export default defineComponent({
     width: 300px;
     padding: 5px;
   }
+
+  &-mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .searchbar {
     display: none;
+
+    &-mobile {
+      display: flex;
+
+      .searchbar__container {
+        border-top: 2px solid;
+        padding: 20px 0;
+      }
+    }
   }
 }
 </style>

@@ -48,7 +48,8 @@ export default defineComponent({
     justify-content: center;
     width: 100%;
     span {
-      width: 50%;
+      width: 100%;
+      margin: 0 22px;
     }
   }
 
@@ -56,7 +57,7 @@ export default defineComponent({
     width: 100%;
     border-radius: 30px;
     background-color: white;
-    border: 1px solid #000;
+    border: 2px solid #000;
     color: #000;
     padding: 8px 16px;
 
