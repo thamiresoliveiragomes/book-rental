@@ -17,7 +17,7 @@ const toast = useToast();
 
 const showToast = () => {
   toast.add({
-    severity: 'success',
+    severity: 'contrast',
     summary: t('bookInfo.successMessageToast'),
     detail: t('bookInfo.successDetailToast'),
     life: 5000,

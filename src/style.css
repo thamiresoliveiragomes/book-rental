@@ -55,3 +55,14 @@ h2 {
 .p-carousel-indicator-active .p-carousel-indicator-button {
   background-color: #000 !important;
 }
+
+.p-toast-message {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+@media screen and (max-width: 768px) {
+  .p-toast {
+    max-width: 300px !important;
+  }
+}

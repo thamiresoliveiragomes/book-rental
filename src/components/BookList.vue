@@ -208,6 +208,10 @@ export default {
     &__controls {
       margin: 20px 48px;
     }
+
+    ::v-deep(.p-paginator-pages) {
+      gap: 0;
+    }
   }
 }
 </style>

@@ -22,7 +22,7 @@
         <Button
           :label="$t('bookInfo.rentButton')"
           class="book-card__button"
-          @click.stop="openModal"
+          @click.stop="handleButtonClick(book)"
         />
       </template>
     </Card>
@@ -71,7 +71,7 @@ export default {
         isModalVisible.value = false;
       }
       toast.add({
-        severity: 'success',
+        severity: 'contrast',
         summary: t('bookInfo.successMessageToast'),
         detail: t('bookInfo.successDetailToast'),
         life: 5000,
@@ -82,12 +82,23 @@ export default {
       router.push(`/product/${book.id}`);
     };
 
+    const isMobile = ref(window.innerWidth <= 768);
+
+    const handleButtonClick = (book: Book) => {
+      if (isMobile.value) {
+        selectBook(book);
+      } else {
+        openModal();
+      }
+    };
+
     return {
       t,
       isModalVisible,
       openModal,
       closeModal,
       selectBook,
+      handleButtonClick,
     };
   },
 };
