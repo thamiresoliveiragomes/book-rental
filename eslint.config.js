@@ -18,6 +18,12 @@ export default [
   prettier,
   // 🚀 Ignorar arquivos da Vercel no ESLint
   {
-    ignores: ['.vercel/', 'vercel.json,', 'node_modules/', 'dist/'],
+    ignores: [
+      '.vercel/',
+      'vercel.json,',
+      'node_modules/',
+      'dist/',
+      'coverage/',
+    ],
   },
 ];
