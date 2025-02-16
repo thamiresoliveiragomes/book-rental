@@ -61,6 +61,21 @@
   "orderCompleted": {
     "title": "Pedido Concluído!",
     "message": "Seu aluguel foi realizado com sucesso. Aproveite sua leitura!",
-    "button": "voltar ao início"
+    "home": "voltar ao início",
+    "orders": "meus pedidos"
+  },
+  "orderHistory": {
+    "title": "Meus Pedidos",
+    "order": "Pedido",
+    "email": "Email",
+    "total": "Total",
+    "date": "Data",
+    "rentalDays": "Dias alugados",
+    "noOrders": "Pedidos não encontrados.",
+    "daysLeft": "dias restantes",
+    "days": "dias",
+    "hours": "horas",
+    "minutes": "minutos",
+    "seconds": "segundos"
   }
 }

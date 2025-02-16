@@ -19,6 +19,7 @@ export default defineConfig({
         'src/main.ts',
         '**/*.config.*',
         '**/*.d.ts',
+        'dist/**',
       ],
     },
   },

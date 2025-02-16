@@ -61,6 +61,21 @@
   "orderCompleted": {
     "title": "Order Completed!",
     "message": "Your rental was successful. Enjoy your reading!",
-    "button": "go to home"
+    "home": "go to home",
+    "orders": "my orders"
+  },
+  "orderHistory": {
+    "title": "My orders",
+    "order": "Order",
+    "email": "Email",
+    "total": "Total",
+    "date": "Date",
+    "rentalDays": "Rental days",
+    "noOrders": "No orders found.",
+    "daysLeft": "days left",
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds"
   }
 }

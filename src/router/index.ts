@@ -7,6 +7,7 @@ import CartView from '../views/CartView.vue';
 import CheckoutView from '../views/CheckoutView.vue';
 import { useCartStore } from '../stores/cartStore';
 import OrderCompletedView from '../views/OrderCompletedView.vue';
+import OrderHistory from '../views/OrderHistoryView.vue';
 
 const routes = [
   { path: '/', component: HomeView },
@@ -24,6 +25,7 @@ const routes = [
   { path: '/cart', component: CartView },
   { path: '/checkout', component: CheckoutView },
   { path: '/order-completed', component: OrderCompletedView },
+  { path: '/order-history', component: OrderHistory },
 ];
 
 const router = createRouter({

@@ -6,13 +6,18 @@
     <div class="searchbar">
       <SearchBar />
     </div>
-    <div class="cart-icon" @click="goToCart">
-      <i class="pi pi-shopping-cart"></i>
-      <Badge
-        v-if="cartItemCount > 0"
-        :value="cartItemCount"
-        class="cart-badge"
-      />
+    <div class="header__icons">
+      <div class="orders-icon" @click="goToOrders">
+        <img src="/meus-pedidos.png" alt="icon" />
+      </div>
+      <div class="cart-icon" @click="goToCart">
+        <i class="pi pi-shopping-cart"></i>
+        <Badge
+          v-if="cartItemCount > 0"
+          :value="cartItemCount"
+          class="cart-badge"
+        />
+      </div>
     </div>
   </header>
   <div class="searchbar-mobile">
@@ -45,12 +50,17 @@ export default defineComponent({
       router.push('/cart');
     };
 
+    const goToOrders = () => {
+      router.push('/order-history');
+    };
+
     const cartItemCount = computed(() => cartStore.cart.length);
 
     return {
       goToHome,
       goToCart,
       cartItemCount,
+      goToOrders,
     };
   },
 });
@@ -68,6 +78,12 @@ export default defineComponent({
     height: 40px;
     cursor: pointer;
   }
+
+  &__icons {
+    display: flex;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .cart-icon {
@@ -80,6 +96,11 @@ export default defineComponent({
     color: #000;
     transition: color 0.3s ease-in-out;
   }
+}
+
+.orders-icon img {
+  width: 38px;
+  margin-right: 16px;
 }
 
 .cart-badge {

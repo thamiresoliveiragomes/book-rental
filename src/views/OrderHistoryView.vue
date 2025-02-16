@@ -1,10 +1,10 @@
 <template>
   <DefaultLayout>
-    <OrderCompleted />
+    <OrderHistory />
   </DefaultLayout>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+import OrderHistory from '../components/OrderHistory.vue';
 import DefaultLayout from '../layouts/DefaultLayout.vue';
-import OrderCompleted from '../components/OrderCompleted.vue';
 </script>

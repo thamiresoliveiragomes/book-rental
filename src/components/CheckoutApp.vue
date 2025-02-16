@@ -112,6 +112,19 @@ export default {
     };
 
     const completePurchase = () => {
+      const order = {
+        email: email.value,
+        cardNumber: cardNumber.value,
+        cardCode: cardCode.value,
+        cardExpirationDate: cardExpirationDate.value,
+        items: cartStore.cart,
+        total: totalCartPrice.value,
+        date: new Date().toISOString(),
+      };
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      orders.push(order);
+      localStorage.setItem('orders', JSON.stringify(orders));
+
       cartStore.clearCart();
       router.push('/order-completed');
     };
