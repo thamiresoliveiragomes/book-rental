@@ -5,8 +5,8 @@
     </div>
     <div class="book-details__content">
       <div class="book-details__content-text">
-        <h1>{{ bookSelected.title }}</h1>
-        <p>{{ bookSelected.author }}</p>
+        <h2>{{ bookSelected.title }}</h2>
+        <h3>{{ bookSelected.author }}</h3>
         <p>{{ bookSelected.description }}</p>
       </div>
       <div class="book-details__content-rental">
@@ -60,7 +60,8 @@ export default {
       default: null,
     },
   },
-  setup(props) {
+  emits: { rent: null },
+  setup(props, { emit }) {
     const bookStore = useBookStore();
     const cartStore = useCartStore();
     const route = useRoute();
@@ -79,6 +80,7 @@ export default {
           rentalPrice.value
         );
       }
+      emit('rent');
     };
 
     const updateRentalPrice = () => {
@@ -129,6 +131,23 @@ export default {
     justify-content: space-between;
     display: flex;
     flex-direction: column;
+
+    &-text {
+      text-align: left;
+
+      h2 {
+        font-weight: 700;
+        font-size: 40px;
+      }
+
+      h3 {
+        font-weight: 500;
+      }
+
+      p {
+        margin: 24px 0;
+      }
+    }
 
     &-rental {
       display: flex;
@@ -191,6 +210,16 @@ export default {
       width: 145px;
       display: flex;
       justify-content: center;
+    }
+  }
+}
+
+.product-view {
+  .book-details {
+    &__image {
+      img {
+        width: 280px;
+      }
     }
   }
 }

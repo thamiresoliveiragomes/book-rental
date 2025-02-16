@@ -1,7 +1,7 @@
 <template>
   <DefaultLayout>
     <div class="product-view">
-      <BookDetails />
+      <BookDetails @rent="showToast" />
     </div>
   </DefaultLayout>
 </template>
@@ -9,6 +9,20 @@
 <script lang="ts" setup>
 import DefaultLayout from '../layouts/DefaultLayout.vue';
 import BookDetails from '../components/BookDetails.vue';
+import { useToast } from 'primevue/usetoast';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+const toast = useToast();
+
+const showToast = () => {
+  toast.add({
+    severity: 'success',
+    summary: t('bookInfo.successMessageToast'),
+    detail: t('bookInfo.successDetailToast'),
+    life: 5000,
+  });
+};
 </script>
 
 <style scoped lang="scss">

@@ -67,7 +67,9 @@ export default {
     };
 
     const closeModal = () => {
-      isModalVisible.value = false;
+      if (isModalVisible.value) {
+        isModalVisible.value = false;
+      }
       toast.add({
         severity: 'success',
         summary: t('bookInfo.successMessageToast'),
